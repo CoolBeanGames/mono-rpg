@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bukkkm47fx7h0"]
+
+[node name="game_main" type="Node2D"]
+
+[node name="game_states" type="Node" parent="."]
+
+[node name="splash" type="Node" parent="game_states"]
+
+[node name="title" type="Node" parent="game_states"]
+
+[node name="pre-load" type="Node" parent="game_states"]
+
+[node name="game_world" type="Node" parent="game_states"]
+
+[node name="game_battle" type="Node" parent="game_states"]
+
+[node name="credits" type="Node" parent="game_states"]
