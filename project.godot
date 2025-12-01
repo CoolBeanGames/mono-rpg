@@ -13,3 +13,9 @@ config_version=5
 config/name="mono-rpg"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+DATA="*res://base/auto_loads/data_manager.gd"
+REFS="*res://base/auto_loads/reference_manager.gd"
+SCENES="*res://base/auto_loads/scene_manager.gd"

@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://bukkkm47fx7h0"]
+[gd_scene load_steps=2 format=3 uid="uid://bukkkm47fx7h0"]
+
+[ext_resource type="Script" uid="uid://2rmomldhdlw" path="res://base/Scripts/game_manager.gd" id="1_k8vwc"]
 
 [node name="game_main" type="Node2D"]
+script = ExtResource("1_k8vwc")
 
 [node name="game_states" type="Node" parent="."]
 
@@ -15,3 +18,7 @@
 [node name="game_battle" type="Node" parent="game_states"]
 
 [node name="credits" type="Node" parent="game_states"]
+
+[node name="audio_sources" type="Node2D" parent="."]
+
+[node name="scene_root" type="Node" parent="."]
