@@ -25,8 +25,8 @@ func scene_load(scene_path : String, allow_override : bool = false):
 			print("cleared loaded scene")
 			loaded_scene.queue_free()
 		#load our instance as an instance and set it up
-		var instance = scn.instantiate()
-		instance.reparent(scene_root)
+		var instance : Node2D= scn.instantiate()
+		scene_root.add_child(instance)
 		#loading should be complete
 	else:
 		push_warning("Attempted to load a scene but one is already set and is not overridable Path: ", scene_path)
@@ -49,7 +49,7 @@ func load_ui_scene(ui_name : String, ui_path : String ):
 	
 	#assign the data
 	var instance : Node = scn.instantiate()
-	instance.reparent(scene_root)
+	scene_root.add_child(instance)
 	loaded_ui_scenes[ui_name] = instance
 
 ##unload a ui scene if it is already loaded

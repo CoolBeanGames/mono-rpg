@@ -1,17 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://bukkkm47fx7h0"]
+[gd_scene load_steps=4 format=3 uid="uid://bukkkm47fx7h0"]
 
 [ext_resource type="Script" uid="uid://2rmomldhdlw" path="res://base/Scripts/game_manager.gd" id="1_k8vwc"]
+[ext_resource type="Script" uid="uid://5iir7yr7gfxy" path="res://base/Scripts/game_states/game_title_state.gd" id="2_ofy32"]
+[ext_resource type="Script" uid="uid://bkiucfxapx2nr" path="res://base/Scripts/game_states/game_preload_state.gd" id="3_j1u5t"]
 
-[node name="game_main" type="Node2D"]
+[node name="game_main" type="Node2D" node_paths=PackedStringArray("scene_root", "states")]
 script = ExtResource("1_k8vwc")
+scene_root = NodePath("scene_root")
+states = {
+"preload": NodePath("game_states/pre-load"),
+"title": NodePath("game_states/title")
+}
 
 [node name="game_states" type="Node" parent="."]
 
 [node name="splash" type="Node" parent="game_states"]
 
 [node name="title" type="Node" parent="game_states"]
+script = ExtResource("2_ofy32")
 
 [node name="pre-load" type="Node" parent="game_states"]
+script = ExtResource("3_j1u5t")
 
 [node name="game_world" type="Node" parent="game_states"]
 
