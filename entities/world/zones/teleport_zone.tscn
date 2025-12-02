@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c41gik2j52gap"]
+
+[ext_resource type="Script" uid="uid://x1rcynocvw42" path="res://entities/world/zones/teleport_zone.gd" id="1_sjy0f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6y1fx"]
+
+[node name="teleport_zone" type="Area2D" groups=["player"]]
+script = ExtResource("1_sjy0f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6y1fx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

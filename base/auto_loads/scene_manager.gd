@@ -1,6 +1,6 @@
 ##written by Dustin Booher
 ##creation date 12/1/25
-##last edited   12/1/25
+##last edited   12/2/25
 class_name scene_manager extends Node
 
 ##the main scene that is currently loaded
@@ -27,6 +27,7 @@ func scene_load(scene_path : String, allow_override : bool = false):
 		#load our instance as an instance and set it up
 		var instance : Node2D= scn.instantiate()
 		scene_root.add_child(instance)
+		loaded_scene = instance
 		#loading should be complete
 	else:
 		push_warning("Attempted to load a scene but one is already set and is not overridable Path: ", scene_path)

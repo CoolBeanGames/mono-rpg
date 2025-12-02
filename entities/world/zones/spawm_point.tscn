@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ck6q4qtd6wlht"]
+
+[ext_resource type="Script" uid="uid://c7wohd1rrreuy" path="res://entities/world/zones/spawm_point.gd" id="1_pfv1o"]
+
+[node name="spawm_point" type="Node2D"]
+script = ExtResource("1_pfv1o")
