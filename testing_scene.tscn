@@ -1,9 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbajn6lop3hui"]
+[gd_scene load_steps=4 format=3 uid="uid://dbajn6lop3hui"]
 
 [ext_resource type="Texture2D" uid="uid://hlhugpfw3dd4" path="res://icon.svg" id="1_k6s54"]
+[ext_resource type="Script" uid="uid://bbbrty2uckg5p" path="res://entities/player/scripts/movement_component.gd" id="2_7tmfp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k6s54"]
+radius = 65.62012
 
 [node name="test" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(168, 142)
+[node name="player" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+shape = SubResource("CircleShape2D_k6s54")
+
+[node name="temp_sprite" type="Sprite2D" parent="player"]
 texture = ExtResource("1_k6s54")
+
+[node name="components" type="Node" parent="player"]
+
+[node name="movement_component" type="Node" parent="player/components" node_paths=PackedStringArray("body")]
+script = ExtResource("2_7tmfp")
+body = NodePath("../..")
