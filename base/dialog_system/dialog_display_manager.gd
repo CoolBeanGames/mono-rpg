@@ -40,3 +40,12 @@ func setup_state_machine():
 		s.setup(self)
 	current_state = states["load_line"]
 	current_state.on_enter()
+
+func change_state(state_key : String):
+	if current_state != null:
+		current_state.on_exit()
+	if !states.has(state_key):
+		push_error("ERROR 0e6 : could not switch state in dialog display manager, state key " , state_key, " does not exist")
+		return
+	current_state = states[state_key]
+	current_state.on_enter()

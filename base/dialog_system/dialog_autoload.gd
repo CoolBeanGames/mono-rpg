@@ -16,10 +16,6 @@ const ENGLISH = "en"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	load_dialog()
-	await get_tree().process_frame
-	start_dialog("test_conversation")
-	await get_tree().create_timer(5).timeout
-	unload_dialog_display()
 
 
 ##called to load in all the dialogs

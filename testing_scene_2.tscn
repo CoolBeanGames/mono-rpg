@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=4 uid="uid://dkjmv1p4kfpot"]
+[gd_scene load_steps=12 format=4 uid="uid://dkjmv1p4kfpot"]
 
 [ext_resource type="Texture2D" uid="uid://dc2efrgcmfpv6" path="res://Art/Tilesets/tileTest2.png" id="1_rrl5q"]
 [ext_resource type="Texture2D" uid="uid://hlhugpfw3dd4" path="res://icon.svg" id="2_wy3sm"]
 [ext_resource type="Script" uid="uid://bbbrty2uckg5p" path="res://entities/player/scripts/movement_component.gd" id="3_qdbyx"]
 [ext_resource type="PackedScene" uid="uid://c41gik2j52gap" path="res://entities/world/zones/teleport_zone.tscn" id="4_qdbyx"]
 [ext_resource type="PackedScene" uid="uid://ck6q4qtd6wlht" path="res://entities/world/zones/spawm_point.tscn" id="5_4j7el"]
+[ext_resource type="Script" uid="uid://cq7qjdjxmsffw" path="res://test_character.gd" id="6_sw2hk"]
+[ext_resource type="PackedScene" uid="uid://b160ya0xhkstv" path="res://entities/components/interactable.tscn" id="7_45j8q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_map4d"]
 texture = ExtResource("1_rrl5q")
@@ -40,6 +42,9 @@ sources/0 = SubResource("TileSetAtlasSource_map4d")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k6s54"]
 radius = 14.142136
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ov63b"]
+radius = 222.17111
 
 [node name="test" type="Node2D"]
 
@@ -82,3 +87,19 @@ scene_path = "res://testing_scene.tscn"
 position = Vector2(434, 345)
 key = "right_door"
 player_reference = NodePath("../player")
+
+[node name="test_character" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(307, 180)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_wy3sm")
+script = ExtResource("6_sw2hk")
+
+[node name="interactable" parent="test_character" instance=ExtResource("7_45j8q")]
+
+[node name="CollisionShape2D" parent="test_character/interactable" index="0"]
+shape = SubResource("CircleShape2D_ov63b")
+
+[connection signal="on_interact" from="test_character/interactable" to="test_character" method="start_conversation"]
+
+[editable path="test_character/interactable"]

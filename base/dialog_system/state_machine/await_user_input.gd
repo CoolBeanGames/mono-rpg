@@ -15,4 +15,4 @@ func on_process():
 	pass
 
 func on_confirm():
-	pass
+	display.change_state("load_line")
