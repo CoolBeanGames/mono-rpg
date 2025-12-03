@@ -17,7 +17,7 @@ const ENGLISH = "en"
 func _ready() -> void:
 	load_dialog()
 	await get_tree().process_frame
-	load_dialog_display()
+	start_dialog("test_conversation")
 	await get_tree().create_timer(5).timeout
 	unload_dialog_display()
 
@@ -108,10 +108,11 @@ func unload_dialog_display():
 func start_dialog(_dialog_key : String):
 	if dialog_display_ref != null:
 		push_warning("attempted to start a dialog but one appears to already be running")
-		var convo = get_conversation(_dialog_key)
-		if convo == DEFAULT_DICT:
-			push_warning("failed to load conversation, key does not exist")
-			return null
-		load_dialog_display()
-		if dialog_display_ref:
-			dialog_display_ref.start_dialog(convo)
+		return
+	var convo = get_conversation(_dialog_key)
+	if convo == DEFAULT_DICT:
+		push_warning("failed to load conversation, key does not exist")
+		return null
+	load_dialog_display()
+	if dialog_display_ref:
+		dialog_display_ref.start_dialog(convo)

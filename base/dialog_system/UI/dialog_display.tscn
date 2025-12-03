@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://cxgtybjgayyrc" path="res://base/dialog_system/state_machine/display_line.gd" id="5_pt2sn"]
 [ext_resource type="Script" uid="uid://cl7mygp0d003u" path="res://base/dialog_system/state_machine/await_user_input.gd" id="6_fv4vi"]
 
-[node name="dialog_display" type="Control" node_paths=PackedStringArray("speaker", "text")]
+[node name="dialog_display" type="Control" node_paths=PackedStringArray("speaker", "text", "states")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,7 +17,7 @@ grow_vertical = 2
 script = ExtResource("1_2dr14")
 speaker = NodePath("name_display")
 text = NodePath("Panel/MarginContainer/dialog")
-conversation = {
+states = {
 "await_user_input": NodePath("state_machine/await_user_input"),
 "display_line": NodePath("state_machine/display_line"),
 "load_line": NodePath("state_machine/load_line")

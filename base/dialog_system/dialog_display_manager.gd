@@ -10,10 +10,11 @@ extends Node
 @export var text : RichTextLabel
 ##a conversation that is loaded in
 @export var conversation : Dictionary
+@export var index : int = 0
 
 ##state machine stuff
 var current_state : dialog_state
-var states : Dictionary[String,dialog_state] = {}
+@export var states : Dictionary[String,dialog_state]
 
 ##called to set the text of the dialog
 func set_text(spkr : String, dlg : String):
@@ -37,3 +38,5 @@ func _process(_delta: float) -> void:
 func setup_state_machine():
 	for s in states.values():
 		s.setup(self)
+	current_state = states["load_line"]
+	current_state.on_enter()
