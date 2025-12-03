@@ -1,15 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://cf7aw4a2sf4lq"]
+[gd_scene load_steps=7 format=3 uid="uid://cf7aw4a2sf4lq"]
 
 [ext_resource type="Theme" uid="uid://0f2q5id6cbou" path="res://UI_Themes/menu_themes.tres" id="1_1txrq"]
+[ext_resource type="Script" uid="uid://clfgdltri7fki" path="res://base/dialog_system/dialog_display_manager.gd" id="1_2dr14"]
 [ext_resource type="Theme" uid="uid://c61xinpndgimc" path="res://UI_Themes/dialog_theme.tres" id="2_2dr14"]
+[ext_resource type="Script" uid="uid://be0h14hyad00c" path="res://base/dialog_system/state_machine/load_line.gd" id="4_lx2qp"]
+[ext_resource type="Script" uid="uid://cxgtybjgayyrc" path="res://base/dialog_system/state_machine/display_line.gd" id="5_pt2sn"]
+[ext_resource type="Script" uid="uid://cl7mygp0d003u" path="res://base/dialog_system/state_machine/await_user_input.gd" id="6_fv4vi"]
 
-[node name="dialog_display" type="Control"]
+[node name="dialog_display" type="Control" node_paths=PackedStringArray("speaker", "text")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_2dr14")
+speaker = NodePath("name_display")
+text = NodePath("Panel/MarginContainer/dialog")
+conversation = {
+"await_user_input": NodePath("state_machine/await_user_input"),
+"display_line": NodePath("state_machine/display_line"),
+"load_line": NodePath("state_machine/load_line")
+}
 
 [node name="Panel" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -39,3 +51,14 @@ anchor_bottom = 0.698
 theme = ExtResource("2_2dr14")
 text = "default_name"
 vertical_alignment = 2
+
+[node name="state_machine" type="Node" parent="."]
+
+[node name="load_line" type="Node" parent="state_machine"]
+script = ExtResource("4_lx2qp")
+
+[node name="display_line" type="Node" parent="state_machine"]
+script = ExtResource("5_pt2sn")
+
+[node name="await_user_input" type="Node" parent="state_machine"]
+script = ExtResource("6_fv4vi")
