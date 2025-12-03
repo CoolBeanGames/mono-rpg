@@ -1,0 +1,10 @@
+[gd_resource type="Theme" format=3 uid="uid://c61xinpndgimc"]
+
+[resource]
+Label/font_sizes/font_size = 32
+MarginContainer/constants/margin_bottom = 20
+MarginContainer/constants/margin_left = 20
+MarginContainer/constants/margin_right = 20
+MarginContainer/constants/margin_top = 20
+RichTextLabel/constants/outline_size = 0
+RichTextLabel/font_sizes/normal_font_size = 32

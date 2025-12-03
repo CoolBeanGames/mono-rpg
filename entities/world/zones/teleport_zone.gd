@@ -25,4 +25,4 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		DATA.write("last_teleport_tag",spawn_point_key,true)
 		DATA.write("spawn_direction",spawm_direction)
-		SCENES.scene_load(scene_path,true)
+		SCENES.scene_load.call_deferred(scene_path,true)

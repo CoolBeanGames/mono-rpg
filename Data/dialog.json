@@ -1,0 +1,10 @@
+{
+	"test_conversation" :{
+			"en" : {
+				"0" : { 
+						"speaker" : "test_speaker",
+						"line" : "hello, this is some test dialog" },
+				"1" : {
+					"speaker" : "test_speaker",
+					"line" : "and this is a second line"}
+				} } }

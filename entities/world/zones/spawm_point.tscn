@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" uid="uid://c7wohd1rrreuy" path="res://entities/world/zones/spawm_point.gd" id="1_pfv1o"]
 
-[node name="spawm_point" type="Node2D"]
+[node name="spawm_point" type="Node2D" groups=["teleport_point"]]
 script = ExtResource("1_pfv1o")

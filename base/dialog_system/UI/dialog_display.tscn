@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://cf7aw4a2sf4lq"]
+
+[ext_resource type="Theme" uid="uid://0f2q5id6cbou" path="res://UI_Themes/menu_themes.tres" id="1_1txrq"]
+[ext_resource type="Theme" uid="uid://c61xinpndgimc" path="res://UI_Themes/dialog_theme.tres" id="2_2dr14"]
+
+[node name="dialog_display" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.70100003
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1txrq")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+theme = ExtResource("2_2dr14")
+
+[node name="dialog" type="RichTextLabel" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("2_2dr14")
+text = "default dialog this is some text that will showcase the dialog in the game"
+
+[node name="name_display" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.632
+anchor_right = 0.5
+anchor_bottom = 0.698
+theme = ExtResource("2_2dr14")
+text = "default_name"
+vertical_alignment = 2

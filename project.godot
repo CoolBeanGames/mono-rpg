@@ -20,6 +20,12 @@ config/icon="res://icon.svg"
 DATA="*res://base/auto_loads/data_manager.gd"
 REFS="*res://base/auto_loads/reference_manager.gd"
 SCENES="*res://base/auto_loads/scene_manager.gd"
+DIALOG="*res://base/dialog_system/dialog_autoload.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_height"
 
 [editor]
 
@@ -28,6 +34,9 @@ movie_writer/movie_file="C:/Users/CallM/OneDrive/moving_rooms.avi"
 [global_group]
 
 player="the players group"
+interactable=""
+teleport_point=""
+teleport_zone=""
 
 [input]
 

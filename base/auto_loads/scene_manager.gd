@@ -1,6 +1,6 @@
 ##written by Dustin Booher
 ##creation date 12/1/25
-##last edited   12/2/25
+##last edited   12/3/25
 class_name scene_manager extends Node
 
 ##the main scene that is currently loaded
@@ -37,21 +37,23 @@ func load_ui_scene(ui_name : String, ui_path : String ):
 	#various error checks
 	if scene_root == null:
 		push_error("Error 0e1 : scene root not set in scene manager, cannot load scene")
-		return
+		return null
 
 	if loaded_ui_scenes.has(ui_name):
 		push_error("ERROR 0e2 : Could not load UI, scene already exists!")
-		return
+		return null
 	
 	var scn : PackedScene = load(ui_path)
 	if scn == null:
 		push_error("ERROR 0e3 : failed to load ui scene from path"  )
-		return
+		return null
 	
 	#assign the data
 	var instance : Node = scn.instantiate()
 	scene_root.add_child(instance)
 	loaded_ui_scenes[ui_name] = instance
+	
+	return instance
 
 ##unload a ui scene if it is already loaded
 func unload_ui_scene(ui_name : String):
