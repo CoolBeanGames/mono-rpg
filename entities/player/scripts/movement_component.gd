@@ -14,6 +14,8 @@ func _process(_delta: float) -> void:
 
 ##create an input vector from input values
 func get_axis() -> Vector2:
+	if INPUT.is_input_blocked():
+		return Vector2(0,0)
 	return Input.get_vector("left","right","up","down")
 
 ##move the character

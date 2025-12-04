@@ -15,7 +15,7 @@ signal on_interact
 func _process(_delta: float) -> void:
 	if !player_in_area:
 		return
-	if Input.is_action_just_released("confirm"):
+	if Input.is_action_just_released("confirm") and !INPUT.is_input_blocked():
 		on_interact.emit()
 
 ##sets player in area to true when the player enters the area

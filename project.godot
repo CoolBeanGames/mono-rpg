@@ -21,6 +21,7 @@ DATA="*res://base/auto_loads/data_manager.gd"
 REFS="*res://base/auto_loads/reference_manager.gd"
 SCENES="*res://base/auto_loads/scene_manager.gd"
 DIALOG="*res://base/dialog_system/dialog_autoload.gd"
+INPUT="*res://base/auto_loads/input_manager.gd"
 
 [display]
 

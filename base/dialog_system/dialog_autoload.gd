@@ -99,6 +99,8 @@ func unload_dialog_display():
 		return
 	SCENES.unload_ui_scene("dialog_display")
 	dialog_display_ref = null
+	
+	INPUT.release_block("dialog")
 
 ##start an instance for a dialog
 func start_dialog(_dialog_key : String):
@@ -112,3 +114,6 @@ func start_dialog(_dialog_key : String):
 	load_dialog_display()
 	if dialog_display_ref:
 		dialog_display_ref.start_dialog(convo)
+	
+	#finally block input
+	INPUT.block_input("dialog",self)
