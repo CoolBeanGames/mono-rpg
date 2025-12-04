@@ -1,10 +1,11 @@
 ##written by Dustin Booher
 ##creation date 12/3/25
-##last edited   12/3/25
+##last edited   12/4/25
 
 class_name dialog_state_load_line
 extends dialog_state
 
+## all the loading is done here
 func on_enter():
 	var line = DIALOG.get_line(display.index,display.conversation)
 	if line == DIALOG.END_OF_CONVO_DICT:
@@ -19,6 +20,7 @@ func on_enter():
 	display.index+=1
 	display.change_state("display_line")
 
+#region Unused
 func on_exit():
 	pass
 
@@ -30,3 +32,4 @@ func on_process():
 
 func on_confirm():
 	pass
+#endregion

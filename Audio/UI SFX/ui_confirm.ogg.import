@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ctrflo3breu3u"
+path="res://.godot/imported/ui_confirm.ogg-f92d011c51b1f269f50daa93a2168ce5.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/UI SFX/ui_confirm.ogg"
+dest_files=["res://.godot/imported/ui_confirm.ogg-f92d011c51b1f269f50daa93a2168ce5.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

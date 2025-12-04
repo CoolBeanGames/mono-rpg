@@ -5,6 +5,7 @@ class_name game_manager extends Node
 
 #the root scene for instantiating new scenes
 @export var scene_root : Node 
+@export var audio_stack : stack
 @export var current_state : game_state
 
 #references to all the states
@@ -14,6 +15,7 @@ class_name game_manager extends Node
 func _ready() -> void:
 	SCENES.initialize(scene_root)
 	REFS.write("scene_root",scene_root)
+	AUDIO.setup(audio_stack)
 	
 	if states.size() == 0:
 		push_error("ERROR 0e4 : No game states defined in game manager")

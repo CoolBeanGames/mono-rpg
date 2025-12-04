@@ -56,7 +56,7 @@ func get_conversation(key : String) -> Dictionary:
 ##get a specific line from a conversation
 func get_line(index : int, conversation : Dictionary) -> Dictionary:
 	if !conversation.has(str(index)):
-		push_warning("conversation does no have ", str(index), "returning end of conversation")
+		push_warning("conversation does no have ", str(index), " returning end of conversation")
 		return END_OF_CONVO_DICT
 	return conversation[str(index)]
 

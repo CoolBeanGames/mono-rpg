@@ -1,6 +1,6 @@
 ##written by Dustin Booher
 ##creation date 12/3/25
-##last edited   12/3/25
+##last edited   12/4/25
 class_name dialog_display
 extends Node
 
@@ -15,6 +15,10 @@ extends Node
 ##state machine stuff
 var current_state : dialog_state
 @export var states : Dictionary[String,dialog_state]
+
+##audio files
+@export var ui_confirm_sound : AudioStream
+@export var ui_dialog_pip : AudioStream
 
 ##called to set the text of the dialog
 func set_text(spkr : String, dlg : String):

@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cf7aw4a2sf4lq"]
+[gd_scene load_steps=9 format=3 uid="uid://cf7aw4a2sf4lq"]
 
 [ext_resource type="Theme" uid="uid://0f2q5id6cbou" path="res://UI_Themes/menu_themes.tres" id="1_1txrq"]
 [ext_resource type="Script" uid="uid://clfgdltri7fki" path="res://base/dialog_system/dialog_display_manager.gd" id="1_2dr14"]
 [ext_resource type="Theme" uid="uid://c61xinpndgimc" path="res://UI_Themes/dialog_theme.tres" id="2_2dr14"]
+[ext_resource type="AudioStream" uid="uid://ctrflo3breu3u" path="res://Audio/UI SFX/ui_confirm.ogg" id="2_fxlcl"]
+[ext_resource type="AudioStream" uid="uid://dueyx47n6ubrr" path="res://Audio/UI SFX/audio_pip.ogg" id="3_onpfy"]
 [ext_resource type="Script" uid="uid://be0h14hyad00c" path="res://base/dialog_system/state_machine/load_line.gd" id="4_lx2qp"]
 [ext_resource type="Script" uid="uid://cxgtybjgayyrc" path="res://base/dialog_system/state_machine/display_line.gd" id="5_pt2sn"]
 [ext_resource type="Script" uid="uid://cl7mygp0d003u" path="res://base/dialog_system/state_machine/await_user_input.gd" id="6_fv4vi"]
@@ -22,6 +24,8 @@ states = {
 "display_line": NodePath("state_machine/display_line"),
 "load_line": NodePath("state_machine/load_line")
 }
+ui_confirm_sound = ExtResource("2_fxlcl")
+ui_dialog_pip = ExtResource("3_onpfy")
 
 [node name="Panel" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -57,8 +61,14 @@ vertical_alignment = 2
 [node name="load_line" type="Node" parent="state_machine"]
 script = ExtResource("4_lx2qp")
 
-[node name="display_line" type="Node" parent="state_machine"]
+[node name="display_line" type="Node" parent="state_machine" node_paths=PackedStringArray("pip_sound_timer")]
 script = ExtResource("5_pt2sn")
+pip_sound_timer = NodePath("Timer")
+pip_wait_sound = 0.025
+
+[node name="Timer" type="Timer" parent="state_machine/display_line"]
 
 [node name="await_user_input" type="Node" parent="state_machine"]
 script = ExtResource("6_fv4vi")
+
+[connection signal="timeout" from="state_machine/display_line/Timer" to="state_machine/display_line" method="play_pip_sound"]

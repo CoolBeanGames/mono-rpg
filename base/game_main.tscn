@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bukkkm47fx7h0"]
+[gd_scene load_steps=5 format=3 uid="uid://bukkkm47fx7h0"]
 
 [ext_resource type="Script" uid="uid://2rmomldhdlw" path="res://base/Scripts/game_manager.gd" id="1_k8vwc"]
 [ext_resource type="Script" uid="uid://5iir7yr7gfxy" path="res://base/Scripts/game_states/game_title_state.gd" id="2_ofy32"]
 [ext_resource type="Script" uid="uid://bkiucfxapx2nr" path="res://base/Scripts/game_states/game_preload_state.gd" id="3_j1u5t"]
+[ext_resource type="Script" uid="uid://cy8jtfui7olfd" path="res://entities/components/stack.gd" id="4_j1u5t"]
 
-[node name="game_main" type="Node2D" node_paths=PackedStringArray("scene_root", "states")]
+[node name="game_main" type="Node2D" node_paths=PackedStringArray("scene_root", "audio_stack", "states")]
 script = ExtResource("1_k8vwc")
 scene_root = NodePath("scene_root")
+audio_stack = NodePath("audio_sources")
 states = {
 "preload": NodePath("game_states/pre-load"),
 "title": NodePath("game_states/title")
@@ -29,5 +31,6 @@ script = ExtResource("3_j1u5t")
 [node name="credits" type="Node" parent="game_states"]
 
 [node name="audio_sources" type="Node2D" parent="."]
+script = ExtResource("4_j1u5t")
 
 [node name="scene_root" type="Node" parent="."]
