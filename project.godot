@@ -23,6 +23,7 @@ SCENES="*res://base/auto_loads/scene_manager.gd"
 DIALOG="*res://base/dialog_system/dialog_autoload.gd"
 INPUT="*res://base/auto_loads/input_manager.gd"
 AUDIO="*res://base/auto_loads/audio_manager.gd"
+FLAGS="*res://base/auto_loads/flag_manager.gd"
 
 [display]
 
@@ -31,7 +32,7 @@ window/stretch/aspect="keep_height"
 
 [editor]
 
-movie_writer/movie_file="C:/Users/CallM/OneDrive/Documentos/dialog.avi"
+movie_writer/movie_file="C:/Users/CallM/OneDrive/Documentos/audio.avi"
 
 [global_group]
 
