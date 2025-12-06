@@ -7,4 +7,32 @@
 				"1" : {
 					"speaker" : "test_speaker",
 					"line" : "and this is a second line"}
-				} } }
+				} } ,
+				"first_convo" :{
+			"en" : {
+				"0" : { 
+						"speaker" : "him",
+						"line" : "hey, have we spoken before?" },
+				"1" : { 
+						"speaker" : "me",
+						"line" : "no, i dont think so..." },
+				"2" : { 
+						"speaker" : "him",
+						"line" : "hmm..." },
+				} } ,
+				"second_convo" :{
+			"en" : {
+				"0" : { 
+						"speaker" : "him",
+						"line" : "now we have spoken before right? this is our second conversation" },
+				"1" : { 
+						"speaker" : "me",
+						"line" : "yeah that sounds about right" },
+				} } ,
+				"final_convo" :{
+			"en" : {
+				"0" : { 
+						"speaker" : "him",
+						"line" : "i have nothing left to say" },
+				} } ,
+				}

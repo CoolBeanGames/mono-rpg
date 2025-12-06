@@ -23,7 +23,10 @@ var current_state : dialog_state
 ##called to set the text of the dialog
 func set_text(spkr : String, dlg : String):
 	if spkr == DIALOG.NO_SPEAKER:
+		print("no speaker")
 		speaker.text = ""
+	else:
+		speaker.text = spkr
 	text.text = dlg
 
 ##actually start the ball rolling on the dialog

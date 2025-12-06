@@ -109,7 +109,7 @@ func start_dialog(_dialog_key : String):
 		return
 	var convo = get_conversation(_dialog_key)
 	if convo == DEFAULT_DICT:
-		push_warning("failed to load conversation, key does not exist")
+		push_warning("failed to load conversation, key " , _dialog_key , " ,does not exist")
 		return null
 	load_dialog_display()
 	if dialog_display_ref:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://dkjmv1p4kfpot"]
+[gd_scene load_steps=28 format=4 uid="uid://dkjmv1p4kfpot"]
 
 [ext_resource type="Texture2D" uid="uid://dc2efrgcmfpv6" path="res://Art/Tilesets/tileTest2.png" id="1_rrl5q"]
 [ext_resource type="Texture2D" uid="uid://hlhugpfw3dd4" path="res://icon.svg" id="2_wy3sm"]
@@ -6,7 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://c41gik2j52gap" path="res://entities/world/zones/teleport_zone.tscn" id="4_qdbyx"]
 [ext_resource type="PackedScene" uid="uid://ck6q4qtd6wlht" path="res://entities/world/zones/spawm_point.tscn" id="5_4j7el"]
 [ext_resource type="Script" uid="uid://cq7qjdjxmsffw" path="res://test_character.gd" id="6_sw2hk"]
-[ext_resource type="PackedScene" uid="uid://b160ya0xhkstv" path="res://entities/components/interactable.tscn" id="7_45j8q"]
+[ext_resource type="PackedScene" uid="uid://7idwryssfuds" path="res://entities/components/interaction_action_dispatcher.tscn" id="7_sw2hk"]
+[ext_resource type="Script" uid="uid://bdwt4vpdiae04" path="res://base/resource_base/condition.gd" id="8_whlth"]
+[ext_resource type="Script" uid="uid://dbko7d10ach07" path="res://base/resource_base/action_set.gd" id="9_n8isg"]
+[ext_resource type="Script" uid="uid://cjv7glsjpqe1l" path="res://Data/resources/conditions/condition_flag_status.gd" id="10_xikkk"]
+[ext_resource type="Script" uid="uid://b5454cf2fiivm" path="res://base/resource_base/action.gd" id="11_7tpj6"]
+[ext_resource type="Script" uid="uid://ioncjrvpsq7w" path="res://Data/resources/actions/action_start_dialog.gd" id="12_l2qom"]
+[ext_resource type="Script" uid="uid://ck45c7s80n7o1" path="res://Data/resources/actions/action_set_flag.gd" id="13_becqc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_map4d"]
 texture = ExtResource("1_rrl5q")
@@ -43,8 +49,62 @@ sources/0 = SubResource("TileSetAtlasSource_map4d")
 [sub_resource type="CircleShape2D" id="CircleShape2D_k6s54"]
 radius = 14.142136
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ov63b"]
-radius = 222.17111
+[sub_resource type="Resource" id="Resource_akh8n"]
+script = ExtResource("10_xikkk")
+flag = "first_convo"
+check_for = 1
+metadata/_custom_type_script = "uid://cjv7glsjpqe1l"
+
+[sub_resource type="Resource" id="Resource_8f5dq"]
+script = ExtResource("12_l2qom")
+dialog_key = "first_convo"
+metadata/_custom_type_script = "uid://ioncjrvpsq7w"
+
+[sub_resource type="Resource" id="Resource_2f6r4"]
+script = ExtResource("13_becqc")
+flag = "first_convo"
+metadata/_custom_type_script = "uid://ck45c7s80n7o1"
+
+[sub_resource type="Resource" id="Resource_ud72p"]
+script = ExtResource("9_n8isg")
+actions = Array[ExtResource("11_7tpj6")]([SubResource("Resource_8f5dq"), SubResource("Resource_2f6r4")])
+metadata/_custom_type_script = "uid://dbko7d10ach07"
+
+[sub_resource type="Resource" id="Resource_3edv8"]
+script = ExtResource("10_xikkk")
+flag = "second_convo"
+check_for = 1
+metadata/_custom_type_script = "uid://cjv7glsjpqe1l"
+
+[sub_resource type="Resource" id="Resource_yujso"]
+script = ExtResource("12_l2qom")
+dialog_key = "second_convo"
+metadata/_custom_type_script = "uid://ioncjrvpsq7w"
+
+[sub_resource type="Resource" id="Resource_ichjc"]
+script = ExtResource("13_becqc")
+flag = "second_convo"
+metadata/_custom_type_script = "uid://ck45c7s80n7o1"
+
+[sub_resource type="Resource" id="Resource_3nnhs"]
+script = ExtResource("9_n8isg")
+actions = Array[ExtResource("11_7tpj6")]([SubResource("Resource_yujso"), SubResource("Resource_ichjc")])
+metadata/_custom_type_script = "uid://dbko7d10ach07"
+
+[sub_resource type="Resource" id="Resource_kgw25"]
+script = ExtResource("10_xikkk")
+flag = "second_convo"
+metadata/_custom_type_script = "uid://cjv7glsjpqe1l"
+
+[sub_resource type="Resource" id="Resource_eejwb"]
+script = ExtResource("12_l2qom")
+dialog_key = "final_convo"
+metadata/_custom_type_script = "uid://ioncjrvpsq7w"
+
+[sub_resource type="Resource" id="Resource_b8ido"]
+script = ExtResource("9_n8isg")
+actions = Array[ExtResource("11_7tpj6")]([SubResource("Resource_eejwb")])
+metadata/_custom_type_script = "uid://dbko7d10ach07"
 
 [node name="test" type="Node2D"]
 
@@ -95,11 +155,13 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_wy3sm")
 script = ExtResource("6_sw2hk")
 
-[node name="interactable" parent="test_character" instance=ExtResource("7_45j8q")]
+[node name="interaction_action_dispatcher" parent="test_character" instance=ExtResource("7_sw2hk")]
+sets = Dictionary[ExtResource("8_whlth"), ExtResource("9_n8isg")]({
+SubResource("Resource_akh8n"): SubResource("Resource_ud72p"),
+SubResource("Resource_3edv8"): SubResource("Resource_3nnhs"),
+SubResource("Resource_kgw25"): SubResource("Resource_b8ido")
+})
 
-[node name="CollisionShape2D" parent="test_character/interactable" index="0"]
-shape = SubResource("CircleShape2D_ov63b")
-
-[connection signal="on_interact" from="test_character/interactable" to="test_character" method="start_conversation"]
-
-[editable path="test_character/interactable"]
+[editable path="left_door"]
+[editable path="test_character/interaction_action_dispatcher"]
+[editable path="test_character/interaction_action_dispatcher/interactable"]

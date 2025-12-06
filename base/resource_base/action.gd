@@ -5,4 +5,6 @@
 class_name action
 extends Resource
 
+@export var enabled : bool = true
+
 @abstract func execute(arg_1 = null , arg_2 = null, arg_3 = null)
